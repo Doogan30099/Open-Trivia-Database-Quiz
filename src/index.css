@@ -2,7 +2,6 @@
     text-align: center; 
     font-size: 2.0em; 
     margin-top: 20px;
-    color:darkgoldenrod;
 }
 
 
@@ -11,5 +10,49 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  background-color:coral;
 }
 
+
+.instructions{
+    text-align: center; 
+    font-size: 1.2em; 
+    margin-top: 20px;
+}
+
+.form-group{
+    text-align: left; 
+    font-size: 1.2em; 
+    margin: 20px auto;
+    padding:20px;
+    border: 2px solid black;
+    border-radius: 10px;
+    max-width: 400px;
+    background-color:lightgrey;
+}
+
+.submit-button{
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center; 
+    font-size: 1.2em; 
+    margin-top: 20px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+}
+.submit-button:hover{
+    background-color: #45a049;
+}
+
+.home-page{
+    background-color:darksalmon;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
