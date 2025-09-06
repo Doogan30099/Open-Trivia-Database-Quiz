@@ -1,4 +1,6 @@
 .welcome{ 
+    background-color: aliceblue;
+    opacity: 0.8;
     text-align: center; 
     font-size: 2.0em; 
     margin-top: 20px;
@@ -15,6 +17,8 @@
 
 
 .instructions{
+    opacity: 0.8;
+    background-color: aliceblue;
     text-align: center; 
     font-size: 1.2em; 
     margin-top: 20px;
@@ -31,7 +35,8 @@
     background-color:lightgrey;
 }
 
-.submit-button{
+#submit-button{
+    opacity: 0.8;
     left: 50%;
     transform: translateX(-50%);
     text-align: center; 
@@ -40,16 +45,17 @@
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
-    background-color: #4CAF50;
-    color: white;
+    background-color: aliceblue;
+    color: black;
     cursor: pointer;
 }
-.submit-button:hover{
-    background-color: #45a049;
+#submit-button:hover{
+    background-color: darkcyan;
 }
 
-.home-page{
-    background-color:darksalmon;
+#home-page{
+    background-color:darkgrey;
+    background-image:url(assets/images/QuizBackgroundPic.jpg);
     min-height: 100vh;
     display: flex;
     flex-direction: column;

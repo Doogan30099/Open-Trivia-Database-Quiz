@@ -4,7 +4,14 @@ import axios from "axios";
 
 function QuizQuestions() {
   const location = useLocation();
-  const { category, difficulty, firstName } = location.state || {};
+  let { category, difficulty, firstName } = location.state || {};
+
+  if (!category || !difficulty || !firstName) {
+    const saved = localStorage.getItem("quizSetup");
+    if (saved) {
+     ({ category, difficulty, firstName } = JSON.parse(saved));
+    }
+  }
   const [questions, setQuestions] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -36,8 +43,19 @@ function QuizQuestions() {
   return (
     <div>
       <h2>Quiz for {firstName}</h2>
-      {/* Render questions here */}
-      <pre>{JSON.stringify(questions, null, 2)}</pre>
+      <ul>
+        {questions.map((question, index) => (
+          <li key={index}>
+            <h3>{question.question}</h3>
+            <ul>
+              {question.incorrect_answers.map((answer, i) => (
+                <li key={i}>{answer}</li>
+              ))}
+              <li>{question.correct_answer}</li>
+            </ul>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import React from "react";
+
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from "react";
@@ -32,8 +32,9 @@ function HomePage() {
       alert("Please fill out all fields.");
       return;
     }
+    localStorage.setItem("quizSetup", JSON.stringify({ firstName, category, difficulty }));
     // Navigate to QuizQuestions page, passing state
-    navigate("QuizQuestions.jsx", {
+    navigate("/quiz", {
       state: {
         firstName,
         category,
