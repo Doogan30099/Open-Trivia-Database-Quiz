@@ -33,7 +33,6 @@ function HomePage() {
       return;
     }
     localStorage.setItem("quizSetup", JSON.stringify({ firstName, category, difficulty }));
-    // Navigate to QuizQuestions page, passing state
     navigate("/quiz", {
       state: {
         firstName,

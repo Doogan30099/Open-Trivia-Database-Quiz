@@ -1,20 +1,23 @@
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 function QuizQuestions() {
   const location = useLocation();
+  const navigate = useNavigate();
   let { category, difficulty, firstName } = location.state || {};
 
   if (!category || !difficulty || !firstName) {
     const saved = localStorage.getItem("quizSetup");
     if (saved) {
-     ({ category, difficulty, firstName } = JSON.parse(saved));
+      ({ category, difficulty, firstName } = JSON.parse(saved));
     }
   }
   const [questions, setQuestions] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [userAnswers, setUserAnswers] = useState([]);
 
   useEffect(() => {
     async function fetchQuestions() {
@@ -40,19 +43,41 @@ function QuizQuestions() {
   if (error) return <div>{error}</div>;
   if (!questions.length) return <div>No questions found.</div>;
 
+  const currentQuestion = questions[currentIndex];
+  const allAnswers = currentQuestion
+    ? [
+        ...currentQuestion.incorrect_answers,
+        currentQuestion.correct_answer,
+      ].sort()
+    : [];
+
+  const handleAnswer = (answer) => {
+    setUserAnswers([...userAnswers, answer]);
+    if (currentIndex < questions.length - 1) {
+      setCurrentIndex(currentIndex + 1);
+    } else {
+     
+      navigate("/results", {
+        state: {
+          questions,
+          userAnswers,
+          firstName,
+        },
+      });
+    }
+  };
+
   return (
-    <div>
-      <h2>Quiz for {firstName}</h2>
+    <div id="quiz-questions">
+      <h2 className="quiz-heading">Quiz for {firstName}</h2>
+      <h3 className="question">
+        Question {currentIndex + 1} of {questions.length}
+      </h3>
+      <p className="question">{currentQuestion.question}</p>
       <ul>
-        {questions.map((question, index) => (
-          <li key={index}>
-            <h3>{question.question}</h3>
-            <ul>
-              {question.incorrect_answers.map((answer, i) => (
-                <li key={i}>{answer}</li>
-              ))}
-              <li>{question.correct_answer}</li>
-            </ul>
+        {allAnswers.map((answer, i) => (
+          <li className="answer-list" key={i}>
+            <button className="answer-button" onClick={() => handleAnswer(answer)}>{answer}</button>
           </li>
         ))}
       </ul>
