@@ -1,6 +1,6 @@
 .welcome{ 
     background-color: aliceblue;
-    opacity: 0.8;
+    opacity: 0.9;
     text-align: center; 
     font-size: 2.0em; 
     margin-top: 20px;
@@ -17,7 +17,8 @@
 
 
 .instructions{
-    opacity: 0.8;
+    font-weight: bold;
+    opacity: 0.9;
     background-color: aliceblue;
     text-align: center; 
     font-size: 1.2em; 
@@ -80,6 +81,7 @@
 }
 
 .question{
+    font-weight: bold;
     padding-bottom: 20px;
     align-items: center;
     margin: 10px;
@@ -125,7 +127,6 @@
     background-image: url(assets/images/QuizBackgroundPic.jpg);
     padding: 20px;
     border-radius: 10px;
-    max-width: 800px;
     margin: 20px auto;
 }
 
@@ -144,7 +145,6 @@
     background-color: lightblue;
 }
 .results-table tr {
-    opacity: 0.9;
     background-color: #f2f2f2;
 }
 

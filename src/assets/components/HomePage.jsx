@@ -85,7 +85,7 @@ function HomePage() {
             ))}
           </select>
         </div>
-        <button id="submit-button" type="submit">
+        <button className="answer-button" type="submit">
           Start Quiz
         </button>
       </form>

@@ -56,11 +56,11 @@ function QuizQuestions() {
     if (currentIndex < questions.length - 1) {
       setCurrentIndex(currentIndex + 1);
     } else {
-     
+      const finalAnswers = [...userAnswers, answer];
       navigate("/results", {
         state: {
           questions,
-          userAnswers,
+          userAnswers: finalAnswers,
           firstName,
         },
       });
